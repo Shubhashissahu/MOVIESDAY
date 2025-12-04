@@ -3,15 +3,16 @@ import "../css/Moviecard.css";
 import { useMovieContext } from "../contexts/MovieContext";
 
 function MovieCard({ movie }) {
-  const { favourites, addToFavourites, removeFromFavourites } = useMovieContext();
+  const { favorites, addToFavorites, removeFromFavorites } = useMovieContext();
 
-  const isFavourite = favourites.some((fav) => fav.id === movie.id);
+  // Protect against undefined
+  const isFavourite = favorites?.some((fav) => fav.id === movie.id) ?? false;
 
   function onFavouriteClick() {
     if (isFavourite) {
-      removeFromFavourites(movie.id);
+      removeFromFavorites(movie.id);
     } else {
-      addToFavourites(movie);
+      addToFavorites(movie);
     }
   }
 
@@ -36,6 +37,7 @@ function MovieCard({ movie }) {
           </button>
         </div>
       </div>
+
       <div className="movie-info">
         <h3>{movie.title}</h3>
         <p>{movie.release_date}</p>
