@@ -5,7 +5,6 @@ import { useMovieContext } from "../contexts/MovieContext";
 function MovieCard({ movie }) {
   const { favorites, addToFavorites, removeFromFavorites } = useMovieContext();
 
-  // Protect against undefined
   const isFavourite = favorites?.some((fav) => fav.id === movie.id) ?? false;
 
   function onFavouriteClick() {
@@ -29,12 +28,32 @@ function MovieCard({ movie }) {
         />
 
         <div className="movie-overlay">
+          {/* Heart toggle */}
           <button
-            className={`favourite-btn ${isFavourite ? "active" : ""}`}
+            className={`favorite-btn ${isFavourite ? "active" : ""}`}
             onClick={onFavouriteClick}
           >
-            ♥
+            {isFavourite ? "♥" : "♡"}
           </button>
+
+          {/* Action buttons at the bottom */}
+          <div className="action-buttons">
+            {!isFavourite ? (
+              <button
+                className="add-btn"
+                onClick={() => addToFavorites(movie)}
+              >
+                ➕ Add to Favorites
+              </button>
+            ) : (
+              <button
+                className="remove-btn"
+                onClick={() => removeFromFavorites(movie.id)}
+              >
+                ❌ Remove from Favorites
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -45,5 +64,4 @@ function MovieCard({ movie }) {
     </div>
   );
 }
-
 export default MovieCard;
