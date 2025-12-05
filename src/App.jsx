@@ -4,6 +4,8 @@ import Home from './Pages/home';
 import { Routes, Route } from 'react-router-dom';
 import { MovieProvider, useMovieContext } from "./contexts/MovieContext";
 import Navbar from './Components/Navbar';
+import Genres from './Pages/Genres';
+
 
 // This component CAN read context
 function AppContent() {
@@ -20,6 +22,9 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/genres" element={<Genres />} /> 
         </Routes>
       </main>
     </>
