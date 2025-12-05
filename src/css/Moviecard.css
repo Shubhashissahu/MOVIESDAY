@@ -1,17 +1,36 @@
+/* ============================
+   Premium Movie Card Component
+   ============================ */
+
 .movie-card {
+  width: 220px;
+  max-width: 240px;
+  margin: 0 auto;
+
   position: relative;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  background-color: #1a1a1a;
-  transition: transform 0.2s;
+  background-color: #111;
+
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
   height: 100%;
+
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+
+  /* Soft cinematic inner glow */
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
 .movie-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
 }
+
+/* ============================
+   Poster
+   ============================ */
 
 .movie-poster {
   position: relative;
@@ -23,21 +42,33 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  opacity: 0;
+  animation: fadeInPoster 0.6s forwards;
 }
+
+@keyframes fadeInPoster {
+  from { opacity: 0; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ============================
+   Overlay (visible on hover)
+   ============================ */
 
 .movie-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
+
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.8)
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.85)
   );
+
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.3s ease;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -48,77 +79,135 @@
   opacity: 1;
 }
 
+/* ============================
+   Favorite Button (Heart)
+   ============================ */
+
 .favorite-btn {
   position: absolute;
   top: 1rem;
   right: 1rem;
+
   color: white;
   font-size: 1.5rem;
-  padding: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
+
+  padding: 0.6rem;
+  background-color: rgba(0, 0, 0, 0.55);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s;
+
+  transition: background-color 0.25s ease, transform 0.2s ease;
 }
 
 .favorite-btn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.85);
+  transform: scale(1.2);
 }
 
+/* Pulsing glowing heart when active */
 .favorite-btn.active {
   color: #ff4757;
+  box-shadow: 0 0 12px rgba(255, 71, 87, 0.6);
+  animation: favPulse 0.45s ease;
 }
 
-.rating-select {
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 0.5rem;
+@keyframes favPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.35); }
+  100% { transform: scale(1.2); }
 }
 
-.movie-info {
-  padding: 1rem;
-  flex: 1;
+/* ============================
+   Add/Remove Buttons
+   ============================ */
+
+.action-buttons {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
+/* Shared style */
+.add-btn,
+.remove-btn {
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+/* Add button */
+.add-btn {
+  background: #0dbb53;
+  color: #ffffff;
+}
+
+.add-btn:hover {
+  background: #08a045;
+  transform: translateY(-2px);
+}
+
+/* Remove button */
+.remove-btn {
+  background: #e50914;
+  color: #ffffff;
+}
+
+.remove-btn:hover {
+  background: #c40710;
+  transform: translateY(-2px);
+}
+
+/* ============================
+   Movie Info
+   ============================ */
+
+.movie-info {
+  padding: 1rem;
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  color: #eee;
+}
+
 .movie-info h3 {
   font-size: 1rem;
   margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .movie-info p {
-  color: #999;
-  font-size: 0.9rem;
+  color: #bbb;
+  font-size: 0.85rem;
 }
 
-.user-rating {
-  color: #ffd700;
-  font-size: 0.9rem;
-  margin-top: auto;
-}
+/* ============================
+   Mobile Scaling
+   ============================ */
 
 @media (max-width: 768px) {
   .movie-card {
-    font-size: 0.9rem;
-  }
-
-  .movie-info {
-    padding: 0.75rem;
+    width: 180px;
   }
 
   .favorite-btn {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     font-size: 1.2rem;
   }
 }
