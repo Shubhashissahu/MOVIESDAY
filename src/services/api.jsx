@@ -13,6 +13,30 @@ export const getPopularMovies = async () => {
     return [];
   }
 };
+// Make sure BASE_URL and API_KEY already exist in this file.
+// Example:
+// const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+// const BASE_URL = "https://api.themoviedb.org/3";
+
+export async function getMoviesByGenre(genreId) {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&language=en-US&sort_by=popularity.desc`
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch movies by genre");
+    }
+
+    const data = await res.json();
+    // TMDB returns results at data.results
+    return data.results || [];
+  } catch (err) {
+    console.error("getMoviesByGenre error:", err);
+    throw err;
+  }
+}
+
 
 // Fetch movies by search query
 export const searchMovies = async (query) => {
