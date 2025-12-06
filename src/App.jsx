@@ -1,13 +1,11 @@
 import "./css/App.css";
-import Favorites from './Pages/Favorites';
-import Home from './Pages/home';
-import { Routes, Route } from 'react-router-dom';
+import Favorites from "./Pages/Favorites";
+import Home from "./Pages/home";
+import { Routes, Route } from "react-router-dom";
 import { MovieProvider, useMovieContext } from "./contexts/MovieContext";
-import Navbar from './Components/Navbar';
-import Genres from './Pages/Genres';
+import Navbar from "./Components/Navbar";
+import Genres from "./Pages/Genres";
 import Footer from "./Components/Footer";
-
-
 
 // This component CAN read context
 function AppContent() {
@@ -24,9 +22,7 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/genres" element={<Genres />} /> 
+          <Route path="/genres" element={<Genres />} />
         </Routes>
       </main>
     </>
@@ -38,7 +34,7 @@ function App() {
   return (
     <MovieProvider>
       <AppContent />
-      <Footer /> 
+      <Footer />
     </MovieProvider>
   );
 }
