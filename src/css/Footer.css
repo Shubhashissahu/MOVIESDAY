@@ -1,0 +1,41 @@
+.footer {
+  width: 100%;
+  padding: 2rem 1rem;
+  background: #0d0d0d;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e50914;
+  margin-bottom: 0.5rem;
+}
+
+.footer-text {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.footer-credit {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.footer-credit span {
+  color: #e50914;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+}
