@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/MOVIESDAY/static/css/main.91847246.css",
-    "main.js": "/MOVIESDAY/static/js/main.c92ff49d.js",
+    "main.css": "/MOVIESDAY/static/css/main.22c4ca5d.css",
+    "main.js": "/MOVIESDAY/static/js/main.f36d7e6c.js",
     "index.html": "/MOVIESDAY/index.html",
-    "main.91847246.css.map": "/MOVIESDAY/static/css/main.91847246.css.map",
-    "main.c92ff49d.js.map": "/MOVIESDAY/static/js/main.c92ff49d.js.map"
+    "main.22c4ca5d.css.map": "/MOVIESDAY/static/css/main.22c4ca5d.css.map",
+    "main.f36d7e6c.js.map": "/MOVIESDAY/static/js/main.f36d7e6c.js.map"
   },
   "entrypoints": [
-    "static/css/main.91847246.css",
-    "static/js/main.c92ff49d.js"
+    "static/css/main.22c4ca5d.css",
+    "static/js/main.f36d7e6c.js"
   ]
 }
